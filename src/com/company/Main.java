@@ -1,5 +1,9 @@
 package com.company;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +15,7 @@ public class Main {
 	// write your code here
         boolean c = true;
         List<Game> games = new ArrayList<Game>();
+        /**
         Game g1 = new Game("game1",2015,8.1,"adventure",1,"company1",100);
         Game g2 = new Game("game2",2010,7.1,"strategy",2,"company1",50,Arrays.asList("shop1", "shop2"));
         Game g3 = new Game("game3",2020,8.9,"sci-fi",1,"company2",30);
@@ -22,6 +27,21 @@ public class Main {
         games.add(g3);
         games.add(g4);
         games.add(g5);
+        **/
+
+        try{
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("Games.dat"));
+            while(true){
+                games.add((Game) in.readObject());
+            }
+        }catch(EOFException e) {
+            System.out.println("EOF");
+        }catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        //for(Game g : games) System.out.println(g);
 
         do {
             System.out.print("\nLütfen sorunuzu giriniz: ");

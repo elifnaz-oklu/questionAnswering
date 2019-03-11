@@ -1,10 +1,11 @@
 package com.company;
 
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class Game {
+public class Game implements Serializable {
 
     private int year;
     private String name;
