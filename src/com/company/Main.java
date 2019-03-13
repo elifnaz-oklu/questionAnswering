@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -48,6 +50,8 @@ public class Main {
             Scanner reader = new Scanner(System.in);
             String s = reader.nextLine();
             s = s.toLowerCase();
+
+            String line = s;
 
 
             if (s.contentEquals("tarihe göre oyun göster")) {
@@ -116,18 +120,39 @@ public class Main {
 
             for (Game g : games) {
 
-                if (s.contains(g.getName()) & (s.contains("tarih") | s.contains("yıl"))) {
+                String pattern1 = "(.*)"+g.getName()+"(.*)(tarih|yıl)(.*)";
+                String pattern2= "(.*)"+g.getName()+"(.*)";
+                String pattern3= "(.*)"+g.getType()+"(.*)";
+                String pattern4= "(.*)"+g.getCompany()+"(.*)";
+                String pattern5= "(.*)"+g.getName()+"(.*)(tarih|yıl)(.*)";
+
+                // Create a Pattern object
+                Pattern r1 = Pattern.compile(pattern1);
+                Pattern r2 = Pattern.compile(pattern2);
+                Pattern r3 = Pattern.compile(pattern3);
+                Pattern r4 = Pattern.compile(pattern4);
+                Pattern r5 = Pattern.compile(pattern5);
+
+                // Now create matcher object.
+                Matcher m1 = r1.matcher(s);
+                Matcher m2= r2.matcher(s);
+                Matcher m3= r3.matcher(s);
+                Matcher m4= r4.matcher(s);
+                Matcher m5= r5.matcher(s);
+
+
+                if (m1.matches()) {
                     System.out.println(g.getName() + " adlı oyunun çıkış tarihi " + g.getYear());
-                } else if (s.contains(g.getName())) {
+                } else if (m2.matches()) {
                     System.out.println("Oyunun bilgileri: \n" + g.toString());
                 }
 
-                if (s.contains(g.getType())) {
+                if (m3.matches()) {
                     System.out.println(g.getName());
 
                 }
 
-                if (s.contains(g.getCompany())) {
+                if (m4.matches()) {
                     System.out.println(g.getName());
 
                 }
