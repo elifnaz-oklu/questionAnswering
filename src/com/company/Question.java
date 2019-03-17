@@ -1,14 +1,15 @@
 package com.company;
 
 import com.company.Game;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.List;
+
 
 public class Question {
 
-    public static void listgames(List<Game> games, String s, Scanner reader){
+    public static void listgames(HashMap<String,Game> games, String s, Scanner reader){
 
         boolean isMatched = false;
         String pattern5 = "(.*)(tarih|zaman|yıl)(.*)(oyun)(.*)(göster|listele|sırala)(.*)";
@@ -26,13 +27,13 @@ public class Question {
         Matcher m7= r7.matcher(s);
         Matcher m8= r8.matcher(s);
 
-        for (Game g : games) {
+        for (String i : games.keySet()) {
 
-            String pattern1 = "(.*)" + g.getName() + "( )(.*)(tarih|yıl|zaman)(.*)";
-            String pattern2 = "(.*)" + g.getName() + "( )(.*)(bilgi|nedir|nasıl)(.*)";
-            String pattern3 = "(.*)" + g.getType() + "(.*)";
-            String pattern4 = "(.*)" + g.getCompany() + "(.*)";
-            String pattern9 = "(.*)" + g.getName() + "( )(.*)(nerede|nereden|hangi)(.*)(satılıyor|satın|satış)(.*)";
+            String pattern1 = "(.*)" + i.toLowerCase() + "( )(.*)(tarih|yıl|zaman)(.*)";
+            String pattern2 = "(.*)" + i.toLowerCase() + "( )(.*)(bilgi|nedir|nasıl)(.*)";
+            String pattern3 = "(.*)" + games.get(i).getType().toLowerCase() + "(.*)";
+            String pattern4 = "(.*)" + games.get(i).getCompany() + "(.*)";
+            String pattern9 = "(.*)" + i.toLowerCase() + "( )(.*)(nerede|nereden|hangi)(.*)(satılıyor|satın|satış)(.*)";
 
             Pattern r1 = Pattern.compile(pattern1);
             Pattern r2 = Pattern.compile(pattern2);
@@ -48,18 +49,19 @@ public class Question {
 
             if (m1.matches()) {
                 isMatched = true;
-                System.out.println(g.getName() + " adlı oyunun çıkış tarihi " + g.getYear());
+                System.out.println(i + " adlı oyunun çıkış tarihi " + games.get(i).getYear());
             }
 
             else if (m9.matches()) {
                 isMatched = true;
-                if (!g.getShops().isEmpty()) {
-                    for (String shop : g.getShops()) {
+                if (!games.get(i).getShops().isEmpty()) {
+                    System.out.println("Oyunun satıldığı mağazalar : ");
+                    for (String shop : games.get(i).getShops()) {
                         System.out.println(shop);
                     }
                 }
 
-                else if (g.getShops().isEmpty()) {
+                else if (games.get(i).getShops().isEmpty()) {
                     System.out.println("Oyun  satışta değildir");
                 }
 
@@ -67,17 +69,17 @@ public class Question {
 
             else if (m2.matches()) {
                 isMatched = true;
-                System.out.println("Oyunun bilgileri: \n" + g.toString());
+                System.out.println("Oyunun bilgileri: \n" +games.get(i).toString());
             }
 
             if (m3.matches()) {
                 isMatched = true;
-                System.out.println(g.getName());
+                System.out.println(i);
             }
 
             if (m4.matches()) {
                 isMatched = true;
-                System.out.println(g.getName());
+                System.out.println(i);
 
             }
 
@@ -90,9 +92,9 @@ public class Question {
             int t1 = reader.nextInt();
             int t2 = reader.nextInt();
             reader.nextLine();
-            for (Game g : games) {
+            for (Game g : games.values()) {
                 if (t1 <= g.getYear() & g.getYear() <= t2) {
-                    System.out.println(g.getName());
+                    System.out.println(g.getName() +  " , tarihi :  "  +  g.getYear());
                 }
             }
 
@@ -103,9 +105,9 @@ public class Question {
             System.out.print("Oyun kaç puan üstü olsun : ");
             double t1 = reader.nextDouble();
             reader.nextLine();
-            for (Game g : games) {
+            for (Game g : games.values()) {
                 if (t1 <= g.getScore()) {
-                    System.out.println(g.getName());
+                    System.out.println(g.getName() + " , puanı :  " + g.getScore());
                 }
             }
 
@@ -116,9 +118,9 @@ public class Question {
             System.out.print("Oyun kaç kişi ve üstü olsun : ");
             int t1 = reader.nextInt();
             reader.nextLine();
-            for (Game g : games) {
+            for (Game g : games.values()) {
                 if (t1 <= g.getPlayerNumber()) {
-                    System.out.println(g.getName());
+                    System.out.println(g.getName() + " , " + g.getPlayerNumber() + " kişilik ");
                 }
             }
 
@@ -130,7 +132,7 @@ public class Question {
             int t1 = reader.nextInt();
             int t2 = reader.nextInt();
             reader.nextLine();
-            for (Game g : games) {
+            for (Game g : games.values()) {
                 if (t1 <= g.getPrice() & g.getPrice() <= t2) {
                     System.out.println(g.getName() + " oyununun fiyatı " + g.getPrice());
                 }

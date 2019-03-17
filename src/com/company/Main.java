@@ -3,21 +3,20 @@ import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        List<Game> games = new ArrayList<Game>();
+        HashMap<String, Game> games = new HashMap<String, Game>();
+
         boolean c = true;
         try{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("Games.dat"));
             while(true){
-                games.add((Game) in.readObject());
+                Game obj = (Game) in.readObject();
+                games.put(obj.getName(),obj);
             }
         }catch(EOFException e) {
             System.out.println("EOF");
@@ -33,7 +32,7 @@ public class Main {
             String s = reader.nextLine();
             s = s.toLowerCase();
            Question.listgames(games,s,reader);
-            System.out.print("Başka soru sormak istiyor musunuz: ");
+            System.out.print("Başka soru sormak istiyor musunuz(Evet için evet yazınız): ");
             if(reader.nextLine().equalsIgnoreCase("evet")) {
                 c = true;
             }
