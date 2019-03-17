@@ -32,7 +32,7 @@ public class Question {
             String pattern1 = "(.*)" + i.toLowerCase() + "( )(.*)(tarih|yıl|zaman)(.*)";
             String pattern2 = "(.*)" + i.toLowerCase() + "( )(.*)(bilgi|nedir|nasıl)(.*)";
             String pattern3 = "(.*)" + games.get(i).getType().toLowerCase() + "(.*)";
-            String pattern4 = "(.*)" + games.get(i).getCompany() + "(.*)";
+            String pattern4 = "(.*)" + games.get(i).getCompany().toLowerCase() + "(.*)";
             String pattern9 = "(.*)" + i.toLowerCase() + "( )(.*)(nerede|nereden|hangi)(.*)(satılıyor|satın|satış)(.*)";
 
             Pattern r1 = Pattern.compile(pattern1);
