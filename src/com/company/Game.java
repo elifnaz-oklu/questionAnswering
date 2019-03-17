@@ -45,8 +45,8 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "Oyunun adı "+ getName() + ",çıkış tarihi " + getYear() + ", oyunun türü "+ getType()+ ", oyuncu sayısı " + getPlayerNumber() + ",puanı "+ getScore()+
-                ", oyunu çıkaran şirket " + getCompany() + ",oyunun fiyatı "+ getPrice();
+        return "Oyunun Adı: "+ getName() + "\nÇıkış Tarihi: " + getYear() + "\nOyunun Türü: "+ getType()+ "\nOyuncu Sayısı: " + getPlayerNumber() + "\nPuanı: "+ getScore()+
+                "\nOyunu Çıkaran Şirket: " + getCompany() + "\nOyunun Fiyatı: "+ getPrice();
     }
 
     public int getYear() {
