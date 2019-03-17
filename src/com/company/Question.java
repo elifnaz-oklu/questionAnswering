@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.Game;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;

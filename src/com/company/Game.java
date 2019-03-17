@@ -57,6 +57,11 @@ public class Game implements Serializable {
         this.year = year;
     }
 
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
     public String getName() {
         return name;
     }

@@ -8,8 +8,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        HashMap<String, Game> games = new HashMap<String, Game>();
+        HashMap<String, Game> games = new HashMap<>();
 
         boolean c = true;
         try{
