@@ -70,7 +70,7 @@ public class Test {
             Game g42 = new Game("Civilization",2010,7.1,"strategy",2,"EA",50);
             Game g43 = new Game("Tropica",2020,8.9,"strategy",1,"IDK Ent",30);
             Game g44 = new Game("Goat Simulator",2008,6.2,"adventure",4,"Coffee Stain",200,Arrays.asList("Steam"));
-            Game g45 = new Game("Revolt",2013,4.2,"action",3,"VOLT",20,Arrays.asList("shop3"));
+            Game g45 = new Game("Revolt",2013,4.2,"action",3,"VOLT",20,Arrays.asList("Steam"));
             Game g46 = new Game("Need for Speed Underground",2005,8.1,"adventure",1,"EA",100);
             Game g47 = new Game("Need for Speed Most Wanted",2006,7.1,"adventure",2,"EA",50);
             Game g48 = new Game("Need for Speed Hot Pursuit",2020,8.9,"adventure",1,"EA",30);
