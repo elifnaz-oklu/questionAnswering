@@ -11,7 +11,7 @@ public class Question {
 
         this.content=s;
         Pattern p = Match.matches(this);
-        questionQuery.FindAnswer(p);
+        questionQuery.findAnswer(p);
 
     }
 

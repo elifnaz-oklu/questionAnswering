@@ -8,7 +8,7 @@ public class Query {
     static Scanner reader = new Scanner(System.in);
     Answer queryAnswer;
 
-    public void FindAnswer(Pattern p) {
+    public void findAnswer(Pattern p) {
 
         String s = "";
         if (PatternList.getIndex(p) == 0) {

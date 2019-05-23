@@ -59,10 +59,11 @@ public class Main {
 
 
         do {
-
-            QuestionHandler.enterQuestion();
-            System.out.print("Başka soru sormak istiyor musunuz(Evet için evet yazınız): ");
+            System.out.print("Please enter your question: ");
             Scanner reader = new Scanner(System.in);
+            String s =reader.nextLine();
+            QuestionHandler.enterQuestion(s);
+            System.out.print("Başka soru sormak istiyor musunuz(Evet için evet yazınız): ");
             if(reader.nextLine().equalsIgnoreCase("evet")) {
                 c = true;
             }
